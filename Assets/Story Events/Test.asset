@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02b1bdbae42a6e4d84d355a5a5cbfd1, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  dialogText: 
+  dialogText: This is a test
   scanResults: []
-  nextEvents: []
+  nextEvents:
+  - response: Ok
+    nextEvent: {fileID: 0}

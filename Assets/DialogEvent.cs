@@ -18,7 +18,9 @@ public class DialogEvent : ScriptableObject
     // Dialog options will call 
     public void Respond (int response)
     {
-        nextEvents[response].nextEvent.Trigger();
+        DialogEvent next = nextEvents[response].nextEvent;
+        if (next != null)
+            next.Trigger();
     }
 }
 

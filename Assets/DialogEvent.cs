@@ -9,18 +9,9 @@ public class DialogEvent : ScriptableObject
     public List<WordDefPair> scanResults;
     public List<ResponseEventPair> nextEvents;
 
-    // Will show a message box and chat options
-    public void Trigger ()
+    public DialogEvent GetResponseEvent (int response)
     {
-        Debug.Log(dialogText);
-    }
-
-    // Dialog options will call 
-    public void Respond (int response)
-    {
-        DialogEvent next = nextEvents[response].nextEvent;
-        if (next != null)
-            next.Trigger();
+        return nextEvents[response].nextEvent;
     }
 }
 

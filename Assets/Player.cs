@@ -5,15 +5,21 @@ public class Player : MonoBehaviour
     public Dictionary wordDictionary;
     public Rigidbody2D rigidBody;
     public SpriteRenderer spriteRenderer;
+    public DialogManager dialogManager;
     public GameObject interactNotification;
 
     public float walkSpeed;
 
+    public bool inDialog = false;
     bool lastWalkDirection = false;
     Interactable lookingAt;
     
     void Update ()
     {
+        // Player cannot move while talking
+        if (inDialog)
+            return;
+
         // Extremely simple controls
         rigidBody.velocity = new Vector2(Input.GetAxis("Horizontal") * walkSpeed,
                                          Input.GetAxis("Vertical") * walkSpeed);
@@ -32,7 +38,7 @@ public class Player : MonoBehaviour
             if (Input.GetAxis("Interact") > 0)
             {
                 interactNotification.GetComponent<SpriteRenderer>().enabled = false;
-                lookingAt.dialog.Trigger();
+                dialogManager.SetDialog(lookingAt.dialog);
                 lookingAt = null;
             }
         }
@@ -43,7 +49,6 @@ public class Player : MonoBehaviour
     {
         interactNotification.GetComponent<SpriteRenderer>().enabled = true;
         lookingAt = obj;
-        Debug.Log("Focused on " + obj);
     }
 
     // Unset the variable if the focus hasn't already changed

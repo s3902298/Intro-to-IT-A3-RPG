@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         // Player will focus on interactable objects and trigger their dialog events when F is pressed
         if (lookingAt != null)
         {
-            interactNotification.transform.position = lookingAt.gameObject.transform.localPosition + new Vector3(0f, 1.5f, 0f);
+            interactNotification.transform.position = lookingAt.gameObject.transform.position + new Vector3(0f, 1.5f, 0f);
 
             if (Input.GetAxis("Interact") > 0)
             {

@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b02b1bdbae42a6e4d84d355a5a5cbfd1, type: 3}
-  m_Name: Test 0
+  m_Name: NPC 1
   m_EditorClassIdentifier: 
-  dialogText: This is a test
+  eventType: 0
+  dialogText: "\u2026\u3057\u3087\u3046\u304C\u306A\u3044\u306A\u3002\u304A\u305D\u3053\u672C\u3092\u3088\u3093\u3067\u3082\u3044\u3044\u3067\u3059\u3002"
+  bookText: []
+  interactableUI: {fileID: 0}
   scanResults: []
   nextEvents:
   - response: Ok
-    nextEvent: {fileID: 11400000, guid: 26dd52850c8eb3844a997d51054fd0bb, type: 2}
-  - response: Not Ok
-    nextEvent: {fileID: 0}
-  - response: Boi
     nextEvent: {fileID: 0}

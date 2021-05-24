@@ -1,11 +1,22 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-// An NPC's speech, the words that are discovered, and the next event to trigger
+public enum EventType
+{
+    npcSpeech,  // An NPC is talking
+    book,  // Book is open
+    puzzle  // Create a puzzle
+}
+
+// UI text shown, the words that are discovered, and the next event to trigger
 [CreateAssetMenu(fileName = "New Dialog Event", menuName = "Events/Dialog Event")]
 public class DialogEvent : ScriptableObject
 {
+    public EventType eventType;
     public string dialogText;
+    [TextArea(minLines: 2, maxLines: 6)]
+    public List<string> bookText;
+    public GameObject interactableUI;
     public List<WordDefPair> scanResults;
     public List<ResponseEventPair> nextEvents;
 

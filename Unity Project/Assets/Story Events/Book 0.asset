@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02b1bdbae42a6e4d84d355a5a5cbfd1, type: 3}
   m_Name: Book 0
   m_EditorClassIdentifier: 
-  dialogText: There are strange rectangular objects laying flat on the orange thing.
+  eventType: 1
+  dialogText: 
+  bookText:
+  - 'Basic Japanese for Dummies
+
+
+
+
+
+
+    (Pages are RIGHT to LEFT)'
+  - "While English only uses one script, the Japanese language uses the following
+    three scripts:\r\n\n\n\n(Click on the LEFT page to continue)"
+  - "Hiragana characters represent a particular syllable, and are widely used in the
+    formation of sentences.\r\n\n\u3042\u30FB\u3044\u30FB\u3046\u30FB\u3048\u30FB\u304A\u3000\uFF1D\u3000A
+    \ I  U  E  O\r\n\u304B\u30FB\u304D\u30FB\u304F\u30FB\u3051\u30FB\u3053\u3000\uFF1D\u3000KA
+    KI KU KE KO\r"
+  - "While similar to Hiragana, Katakana is used to transcribe foreign words and uses
+    different characters.\r\n\n\u30ED\u30DC\u30C8\u3000\uFF1D\u3000RO BO TO (Robot)\r\n\u30D0\u30B9\u3000\uFF1D\u3000BA
+    SU (Bus)\r"
+  - 'Adopted from Chinese characters, Kanji...
+
+
+    (TO BE COMPLETED)'
+  interactableUI: {fileID: 0}
   scanResults: []
-  nextEvents:
-  - response: Ok
-    nextEvent: {fileID: 0}
+  nextEvents: []

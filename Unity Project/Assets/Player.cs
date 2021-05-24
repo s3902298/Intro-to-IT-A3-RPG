@@ -11,35 +11,39 @@ public class Player : MonoBehaviour
     public float walkSpeed;
 
     public bool inDialog = false;
-    bool lastWalkDirection = false;
-    Interactable lookingAt;
-    
-    void Update ()
+    private bool lastWalkDirection = false;
+    private bool lastInteractPressed = false;
+    private Interactable lookingAt;
+
+    void Update()
     {
         // Player cannot move while talking
-        if (inDialog)
-            return;
+        if (inDialog) {
+            rigidBody.velocity = new Vector2();
+            if (AxisTapped("Interact") || Input.GetAxis("Cancel") > 0)  // (Input.GetAxis("Interact") > 0)
+                dialogManager.SetDialogs(null);
+        } else {
+            // Extremely simple controls
+            rigidBody.velocity = new Vector2(Input.GetAxis("Horizontal") * walkSpeed,
+                                             Input.GetAxis("Vertical") * walkSpeed);
 
-        // Extremely simple controls
-        rigidBody.velocity = new Vector2(Input.GetAxis("Horizontal") * walkSpeed,
-                                         Input.GetAxis("Vertical") * walkSpeed);
-
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            lastWalkDirection = (int)Mathf.Sign(Input.GetAxis("Horizontal")) < 0 ? true : false;
-            spriteRenderer.flipX = lastWalkDirection;
-        }
-
-        // Player will focus on interactable objects and trigger their dialog events when F is pressed
-        if (lookingAt != null)
-        {
-            interactNotification.transform.position = lookingAt.gameObject.transform.position + new Vector3(0f, 1.5f, 0f);
-
-            if (Input.GetAxis("Interact") > 0)
+            if (Input.GetAxis("Horizontal") != 0)
             {
-                interactNotification.GetComponent<SpriteRenderer>().enabled = false;
-                dialogManager.SetDialog(lookingAt.dialog);
-                lookingAt = null;
+                lastWalkDirection = (int)Mathf.Sign(Input.GetAxis("Horizontal")) < 0 ? true : false;
+                spriteRenderer.flipX = lastWalkDirection;
+            }
+
+            // Player will focus on interactable objects and trigger their dialog events when F is pressed
+            if (lookingAt != null)
+            {
+                interactNotification.transform.position = lookingAt.gameObject.transform.position + new Vector3(0f, 1.5f, 0f);
+
+                if (AxisTapped("Interact"))  // (Input.GetAxis("Interact") > 0)
+                {
+                    interactNotification.GetComponent<SpriteRenderer>().enabled = false;
+                    dialogManager.SetDialogs(lookingAt.dialog);
+                    lookingAt = null;
+                }
             }
         }
     }
@@ -59,5 +63,20 @@ public class Player : MonoBehaviour
             interactNotification.GetComponent<SpriteRenderer>().enabled = false;
             lookingAt = null;
         }
+    }
+
+    // Will only return `true` on the first frame it's pressed, similar to `Input.GetKeyDown()`
+    private bool AxisTapped (string axis)
+    {
+        bool returnVal = false;
+        if (Input.GetAxis(axis) > 0)
+        {
+            if (!lastInteractPressed)
+                returnVal = true;
+            lastInteractPressed = true;
+        } else
+            lastInteractPressed = false;
+
+        return returnVal;
     }
 }

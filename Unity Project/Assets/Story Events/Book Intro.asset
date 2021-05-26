@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02b1bdbae42a6e4d84d355a5a5cbfd1, type: 3}
+  m_Name: Book Intro
+  m_EditorClassIdentifier: 
+  eventType: 0
+  dialogText: Strange rectangles are arranged on the surface...
+  bookText: []
+  interactableUI: {fileID: 0}
+  scanResults: []
+  nextEvents:
+  - response: Ok
+    nextEvent: {fileID: 0}
+  - response: Look at them
+    nextEvent: {fileID: 11400000, guid: 7db372a8b466c3b43ba0dcec41c4ef4d, type: 2}

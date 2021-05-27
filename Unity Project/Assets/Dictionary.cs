@@ -1,11 +1,39 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Manages & stores discovered words
 public class Dictionary : MonoBehaviour
 {
-    List<WordDefPair> discoveredWords;
+    public Text dictionaryText;
+    public Scrollbar toggledScrollbar;
+    public List<Image> toggledImages;
 
+    private List<WordDefPair> discoveredWords;
+    
+    void Start ()
+    {
+        discoveredWords = new List<WordDefPair>();
+    }
+
+    // Toggles the dictionary pop-up
+    public void ToggleDictionary ()
+    {
+        dictionaryText.enabled = !dictionaryText.enabled;
+        toggledScrollbar.interactable = !toggledScrollbar.interactable;
+        foreach (Image img in toggledImages)
+            img.enabled = !img.enabled;
+    }
+
+    // Puts a definition into the list
+    public void AddToDictionary (WordDefPair definition)
+    {
+        if (discoveredWords.Contains(definition))
+            return;
+
+        discoveredWords.Add(definition);
+        dictionaryText.text += definition.word + ": " + definition.definition + "\n\n";
+    }
 }
 
 // A word & its definition

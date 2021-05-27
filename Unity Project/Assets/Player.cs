@@ -2,7 +2,6 @@
 
 public class Player : MonoBehaviour
 {
-    public Dictionary wordDictionary;
     public Rigidbody2D rigidBody;
     public SpriteRenderer spriteRenderer;
     public DialogManager dialogManager;

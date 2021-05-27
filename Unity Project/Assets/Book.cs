@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Book : MonoBehaviour
 {
     public List<GameObject> pages;
+    public Button scanButton;
 
     private int pageNum;
     private List<string> pageTexts;
@@ -18,6 +19,10 @@ public class Book : MonoBehaviour
         pageTexts = dialog ? dialog.bookText : null;
         pageNum = 0;
         UpdatePages();
+        
+        // Set scan vars, only if there is something to scan
+        scanButton.interactable = dialog && dialog.scanResults.Count > 0;
+        scanButton.GetComponentInChildren<Text>().enabled = dialog && dialog.scanResults.Count > 0;
     }
 
     // Changes the page by some amount

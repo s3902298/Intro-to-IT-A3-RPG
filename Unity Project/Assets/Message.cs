@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class Message : MonoBehaviour
 {
     public List<GameObject> dialogButtons;
+    public Button scanButton;
 
     // Hides or shows dialog elements as necessary for an event
-    public void SetDialog(DialogEvent dialog)
+    public void SetDialog (DialogEvent dialog)
     {
         // Set main dialog text vars
         GetComponent<Image>().enabled = dialog;
@@ -34,5 +35,9 @@ public class Message : MonoBehaviour
             btnText.enabled = status;
             btnText.text = dialogText;
         }
+
+        // Set scan vars, only if there is something to scan
+        scanButton.interactable = dialog && dialog.scanResults.Count > 0;
+        scanButton.GetComponentInChildren<Text>().enabled = dialog && dialog.scanResults.Count > 0;
     }
 }

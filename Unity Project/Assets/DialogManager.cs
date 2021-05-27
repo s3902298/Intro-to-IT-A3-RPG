@@ -5,6 +5,7 @@ public class DialogManager : MonoBehaviour
     public Message messageManager;
     public Book bookManager;
     public Player player;
+    public Dictionary dictionary;
 
     DialogEvent curEvent;
     GameObject puzzle;
@@ -14,6 +15,7 @@ public class DialogManager : MonoBehaviour
         SetDialogs(curEvent.GetResponseEvent(response));
     }
     
+    // Enables or disables each dialog based on the type of event
     public void SetDialogs (DialogEvent dialog)
     {
         curEvent = dialog;
@@ -26,5 +28,15 @@ public class DialogManager : MonoBehaviour
             puzzle = Instantiate(dialog.interactableUI);
         else
             Destroy(puzzle);
+    }
+
+    // Adds all of the current event's definitions to the dictionary
+    public void ScanDefinitions ()
+    {
+        if (curEvent)
+        {
+            foreach (WordDefPair definition in curEvent.scanResults)
+                dictionary.AddToDictionary(definition);
+        }
     }
 }

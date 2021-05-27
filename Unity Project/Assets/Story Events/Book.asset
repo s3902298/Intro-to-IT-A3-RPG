@@ -32,10 +32,15 @@ MonoBehaviour:
   - "While similar to Hiragana, Katakana is used to transcribe foreign words and uses
     different characters.\r\n\n\u30ED\u30DC\u30C8\u3000\uFF1D\u3000RO BO TO (Robot)\r\n\u30D0\u30B9\u3000\uFF1D\u3000BA
     SU (Bus)\r"
-  - 'Adopted from Chinese characters, Kanji...
-
-
-    (TO BE COMPLETED)'
+  - "Adopted from Chinese characters, Kanji is an ideogram where a character has a
+    meaning and corresponds to a word.\r\n\n\u4E00\u3001\u4E8C\u3001\u4E09\u3001\u56DB\u3000\uFF1D\u30001,
+    2, 3, 4\r\n"
   interactableUI: {fileID: 0}
-  scanResults: []
+  scanResults:
+  - word: "\u30ED\u30DC\u30C8"
+    definition: Robot
+  - word: "\u30D0\u30B9"
+    definition: Bus
+  - word: "\u4E00 \u4E8C \u4E09 \u56DB"
+    definition: 1, 2, 3, 4
   nextEvents: []

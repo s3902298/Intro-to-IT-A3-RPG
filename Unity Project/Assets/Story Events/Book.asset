@@ -38,9 +38,9 @@ MonoBehaviour:
   interactableUI: {fileID: 0}
   scanResults:
   - word: "\u30ED\u30DC\u30C8"
-    definition: Robot
+    definition: '"ROBOTO" Robot'
   - word: "\u30D0\u30B9"
-    definition: Bus
+    definition: ' "BASU" Bus'
   - word: "\u4E00 \u4E8C \u4E09 \u56DB"
     definition: 1, 2, 3, 4
   nextEvents: []

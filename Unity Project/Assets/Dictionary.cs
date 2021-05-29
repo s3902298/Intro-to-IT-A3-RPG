@@ -20,9 +20,9 @@ public class Dictionary : MonoBehaviour
     public void ToggleDictionary ()
     {
         dictionaryText.enabled = !dictionaryText.enabled;
-        toggledScrollbar.interactable = !toggledScrollbar.interactable;
+        toggledScrollbar.interactable = dictionaryText.enabled;
         foreach (Image img in toggledImages)
-            img.enabled = !img.enabled;
+            img.enabled = dictionaryText.enabled;
     }
 
     // Puts a definition into the list

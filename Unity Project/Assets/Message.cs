@@ -38,6 +38,6 @@ public class Message : MonoBehaviour
 
         // Set scan vars, only if there is something to scan
         scanButton.interactable = dialog && dialog.scanResults.Count > 0;
-        scanButton.GetComponentInChildren<Text>().enabled = dialog && dialog.scanResults.Count > 0;
+        scanButton.GetComponentsInChildren<Image>()[1].enabled = dialog && dialog.scanResults.Count > 0;
     }
 }
